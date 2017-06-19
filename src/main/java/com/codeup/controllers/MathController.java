@@ -14,25 +14,25 @@ public class MathController {
 
     @GetMapping("/add/{firstNum}/and/{secondNum}")
     @ResponseBody
-    public Integer add(@PathVariable int firstNum, @PathVariable int secondNum){
+    public int add(@PathVariable int firstNum, @PathVariable int secondNum){
         return firstNum + secondNum;
     }
 
     @GetMapping("/subtract/{firstNum}/from/{secondNum}")
     @ResponseBody
-    public Integer subtract(@PathVariable int firstNum, @PathVariable int secondNum){
-        return secondNum - firstNum;
+    public int subtract(@PathVariable int firstNum, @PathVariable int secondNum){
+        return firstNum - secondNum;
     }
 
     @GetMapping("/multiply/{firstNum}/and/{secondNum}")
     @ResponseBody
-    public long Multiplication(@PathVariable long firstNum, @PathVariable long secondNum){
+    public int Multiplication(@PathVariable int firstNum, @PathVariable int secondNum){
         return firstNum * secondNum;
     }
 
     @GetMapping("/divide/{firstNum}/by/{secondNum}")
     @ResponseBody
-    public long divide(@PathVariable long firstNum, @PathVariable long secondNum){
-        return firstNum / secondNum;
+    public double divide(@PathVariable int firstNum, @PathVariable int secondNum){
+        return (double) firstNum / secondNum;
     }
 }
