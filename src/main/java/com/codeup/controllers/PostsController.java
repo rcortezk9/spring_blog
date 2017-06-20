@@ -1,38 +1,49 @@
 package com.codeup.controllers;
 
+import com.codeup.models.Post;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-/**
- * Created by renecortez on 6/19/17.
- */
+import java.util.ArrayList;
+
+// TODO: add posts svc
+
 @Controller
 public class PostsController {
 
     @GetMapping("/posts")
-    @ResponseBody
-    public String viewAll(){
-        return "posts index page";
+    public String viewAll(Model model) {
+        ArrayList<Post> posts = new ArrayList<>();
+
+        posts.add(new Post("test post again", "here is a dummy body"));
+        posts.add(new Post("yet another post", "lorem ipsum, etc...."));
+k
+        model.addAttribute("posts", posts);
+
+        return "posts/index";
     }
 
     @GetMapping("/posts/{id}")
-    @ResponseBody
-    public String viewIndividualPost(@PathVariable long id){
-        return "view an individual post" + id;
+    public String viewIndividualPost(@PathVariable long id, Model model) {
+        // Inside the method that shows an individual post, create a new post object and pass it to the view.
+        Post post = new Post("test post", "this is my first test blog post");
+        model.addAttribute("post", post);
+        return "posts/show";
     }
 
     @GetMapping("/posts/create")
     @ResponseBody
-    public String showPostForm(){
+    public String showPostForm() {
         return "view the form for creating a post";
     }
+
     @PostMapping("/posts/create")
     @ResponseBody
-    public String savePost(){
+    public String savePost() {
         return "create a new post";
     }
-
 }
