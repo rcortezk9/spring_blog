@@ -1,6 +1,8 @@
 package com.codeup.controllers;
 
+import com.codeup.Services.PostSvc;
 import com.codeup.models.Post;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,21 +10,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
-
 // TODO: add posts svc
 
 @Controller
 public class PostsController {
 
+    private final PostSvc postSvc;
+
+    @Autowired
+    public PostsController(PostSvc postSvc) {
+        this.postSvc = postSvc;//conncet services
+    }
+
     @GetMapping("/posts")
     public String viewAll(Model model) {
-        ArrayList<Post> posts = new ArrayList<>();
 
-        posts.add(new Post("test post again", "here is a dummy body"));
-        posts.add(new Post("yet another post", "lorem ipsum, etc...."));
-
-        model.addAttribute("posts", posts);
+        // or List<Post> posts = postSvc.findAll()
+        model.addAttribute("posts", postSvc.findAll());// or posts
 
         return "posts/index";
     }

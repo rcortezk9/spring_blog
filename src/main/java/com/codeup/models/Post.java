@@ -6,15 +6,8 @@ package com.codeup.models;
 public class Post {
     private String title;
     private String body;
-    private int id;
+    private long id;//part of service
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public Post(String title, String body) {
         this.title = title;
@@ -35,5 +28,13 @@ public class Post {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

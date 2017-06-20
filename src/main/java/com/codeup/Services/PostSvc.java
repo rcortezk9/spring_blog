@@ -4,13 +4,13 @@ import com.codeup.models.Post;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.List;//don't not import the one with sun
 
 /**
  * Created by renecortez on 6/20/17.
  */
 
-@Service("PostSvc")
+@Service("postSvc")//make sure it is not the same as the class
 public class PostSvc {
     private List<Post> posts;
 
