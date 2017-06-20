@@ -21,6 +21,7 @@ public class PostsController {
 
         posts.add(new Post("test post again", "here is a dummy body"));
         posts.add(new Post("yet another post", "lorem ipsum, etc...."));
+
         model.addAttribute("posts", posts);
 
         return "posts/index";

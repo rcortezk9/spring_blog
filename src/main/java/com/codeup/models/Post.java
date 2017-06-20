@@ -6,6 +6,15 @@ package com.codeup.models;
 public class Post {
     private String title;
     private String body;
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Post(String title, String body) {
         this.title = title;
