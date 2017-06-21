@@ -16,7 +16,7 @@ public class PostsController {
 
     @Autowired
     public PostsController(PostSvc postSvc) {
-        this.postSvc = postSvc;//conncet services
+        this.postSvc = postSvc;//connect services
     }
 
     @GetMapping("/posts")
@@ -25,7 +25,7 @@ public class PostsController {
         // or List<Post> posts = postSvc.findAll()
         model.addAttribute("posts", postSvc.findAll());// or posts
 
-        return "post/index";
+        return "posts/index";
     }
 
     @GetMapping("/posts/{id}")
@@ -38,18 +38,19 @@ public class PostsController {
 
     @GetMapping("/posts/create")
     public String showPostForm(Model model) {
-        model.addAttribute("post", new Post());
+        model.addAttribute("posts", new Post());
         return "posts/create";
     }
 
     @PostMapping("/posts/create")
     public String savePost(
         @RequestParam(name = "title") String title,
-        @RequestParam(name = "description") String description,
+        @RequestParam(name = "body") String body,
         Model model
     ){
-        Post post = new Post(title, description);
-        model.addAttribute("post", post);
+        Post post = new Post(title, body);
+        postSvc.save(post);
+        model.addAttribute("posts", post);
         return "posts/create";
     }
 }
