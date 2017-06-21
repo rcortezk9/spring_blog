@@ -5,10 +5,7 @@ import com.codeup.models.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 // TODO: add posts svc
 
@@ -40,14 +37,19 @@ public class PostsController {
     }
 
     @GetMapping("/posts/create")
-    @ResponseBody
-    public String showPostForm() {
-        return "view the form for creating a posts";
+    public String showPostForm(Model model) {
+        model.addAttribute("post", new Post());
+        return "posts/create";
     }
 
     @PostMapping("/posts/create")
-    @ResponseBody
-    public String savePost() {
-        return "create a new posts";
+    public String savePost(
+        @RequestParam(name = "title") String title,
+        @RequestParam(name = "description") String description,
+        Model model
+    ){
+        Post post = new Post(title, description);
+        model.addAttribute("post", post);
+        return "posts/create";
     }
 }

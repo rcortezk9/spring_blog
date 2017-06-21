@@ -2,6 +2,10 @@ package com.codeup.Services;
 
 import com.codeup.models.Post;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;//don't not import the one with sun
@@ -38,4 +42,5 @@ public class PostSvc {
         save(new Post("One more posts", "lorem ipsum, etc...."));
         save(new Post("One more posts", "lorem ipsum, etc...."));
     }
+
 }
