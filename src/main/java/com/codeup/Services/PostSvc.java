@@ -35,7 +35,7 @@ public class PostSvc {
     private void createPost(){
         posts = new ArrayList<>();
 
-        save(new Post("One more post", "lorem ipsum, etc...."));
-        save(new Post("One more post", "lorem ipsum, etc...."));
+        save(new Post("One more posts", "lorem ipsum, etc...."));
+        save(new Post("One more posts", "lorem ipsum, etc...."));
     }
 }

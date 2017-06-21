@@ -33,21 +33,21 @@ public class PostsController {
 
     @GetMapping("/posts/{id}")
     public String viewIndividualPost(@PathVariable long id, Model model) {
-        // Inside the method that shows an individual post, create a new post object and pass it to the view.
-        Post post = new Post("test post", "this is my first test blog post");
-        model.addAttribute("post", post);
+        // Inside the method that shows an individual posts, create a new posts object and pass it to the view.
+        Post post = postSvc.findOne(id);
+        model.addAttribute("posts", post);
         return "posts/show";
     }
 
     @GetMapping("/posts/create")
     @ResponseBody
     public String showPostForm() {
-        return "view the form for creating a post";
+        return "view the form for creating a posts";
     }
 
     @PostMapping("/posts/create")
     @ResponseBody
     public String savePost() {
-        return "create a new post";
+        return "create a new posts";
     }
 }
