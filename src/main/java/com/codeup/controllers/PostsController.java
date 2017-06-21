@@ -28,7 +28,7 @@ public class PostsController {
         // or List<Post> posts = postSvc.findAll()
         model.addAttribute("posts", postSvc.findAll());// or posts
 
-        return "posts/index";
+        return "post/index";
     }
 
     @GetMapping("/posts/{id}")
