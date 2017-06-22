@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-// TODO: add posts svc
 
 @Controller
 public class PostsController {
@@ -52,5 +51,12 @@ public class PostsController {
         postSvc.save(post);
         model.addAttribute("posts", post);
         return "posts/create";
+    }
+
+    @GetMapping("/posts/{id}/edit")
+    public String showEditForm(@PathVariable long id, Model model) {
+        Post post = postSvc.findOne(id);
+        model.addAttribute("post", post);
+        return "posts/edit";
     }
 }
