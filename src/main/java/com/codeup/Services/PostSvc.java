@@ -1,6 +1,9 @@
 package com.codeup.Services;
 
+import com.codeup.Repositories.PostsRepositories;
+import com.codeup.controllers.PostsController;
 import com.codeup.models.Post;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +19,15 @@ import java.util.List;//don't not import the one with sun
 
 @Service("postSvc")//make sure it is not the same as the class
 public class PostSvc {
+
+    private PostsRepositories postsDao;
+
+    @Autowired
+    public PostSvc(PostsRepositories postsDao){
+        this.postsDao = postsDao;
+    }
+
+
     private List<Post> posts;
 
     public PostSvc(){
