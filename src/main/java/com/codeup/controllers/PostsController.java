@@ -21,8 +21,8 @@ public class PostsController {
     @GetMapping("/posts")
     public String viewAll(Model model) {
 
-        // or List<Post> posts = postSvc.findAll()
-        model.addAttribute("posts", postSvc.findAll());// or posts
+        Iterable<Post> posts = postSvc.findAll();
+        model.addAttribute("posts", posts);
 
         return "posts/index";
     }

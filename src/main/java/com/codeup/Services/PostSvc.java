@@ -12,10 +12,10 @@ import org.springframework.stereotype.Service;
 
 @Service("postSvc")//make sure it is not the same as the class
 public class PostSvc {
-    private PostsRepositories postsDao;
+    private PostsRepositories postsDao; //step 1
 
     @Autowired
-    public PostSvc(PostsRepositories postsDao){
+    public PostSvc(PostsRepositories postsDao){ //step 2
         this.postsDao = postsDao;
     }
 
