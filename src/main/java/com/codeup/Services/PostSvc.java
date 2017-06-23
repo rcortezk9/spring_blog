@@ -24,10 +24,15 @@ public class PostSvc {
     }
 
     public Post save(Post post){
-        return postsDao.save(post);
+        postsDao.save(post);
+        return post;
     }
 
     public Post findOne(long id){
         return postsDao.findOne(id);
+    }
+
+    public void deletePost(long id){
+        postsDao.delete(id);
     }
 }
