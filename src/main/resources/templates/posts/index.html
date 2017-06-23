@@ -10,8 +10,11 @@
 <h2>Listing of all the posts</h2>
 
 <div th:each="post : ${post}">
+    <h1>Posts Show Page</h1>
+    <h2>This is the view for an individual post.</h2>
     <h2>Title: <span th:text="${post.title}"></span></h2>
     <h2>Body: <span th:text="${post.body}"></span></h2>
+    <h2>Email: <span th:text="${post.owner.email}"></span></h2>
 </div>
 
 </body>

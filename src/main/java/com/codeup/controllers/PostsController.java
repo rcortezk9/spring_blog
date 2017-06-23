@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-
 @Controller
 public class PostsController {
 
@@ -22,13 +21,10 @@ public class PostsController {
         this.usersDao = usersDao;
     }
 
-
-
     @GetMapping("/posts")
     public String viewAll(Model model) {
         Iterable<Post> posts = postSvc.findAll();
         model.addAttribute("posts", posts);
-
         return "posts/index";
     }
 
@@ -52,8 +48,8 @@ public class PostsController {
         @RequestParam(name = "body") String body,
         Model model
     ){
-        Post post = new Post(title, body);
         User user = usersDao.findOne(1l);
+        Post post = new Post(title, body, user);
         post.setOwner(user);
         postSvc.save(post);
         model.addAttribute("posts", post);
@@ -75,8 +71,8 @@ public class PostsController {
 
     @PostMapping("/post/delete")
     public String deletePost(@ModelAttribute Post post, Model model){
-            postSvc.deletePost(post.getId());
-            model.addAttribute("msg", "Your post was deleted correctly");
-            return "return the view with a success message";
+        postSvc.deletePost(post.getId());
+        model.addAttribute("msg", "Your post was deleted correctly");
+        return "return the view with a success message";
     }
 }
