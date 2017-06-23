@@ -20,6 +20,9 @@ public class Post {
     @Column(nullable = false, columnDefinition = "Text")
     private String body;
 
+    @OneToOne
+    private User owner;
+
 
     public Post(String title, String body) {
         this.title = title;
