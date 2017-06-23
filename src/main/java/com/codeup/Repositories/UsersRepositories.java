@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public interface UserRepositories extends CrudRepository<User, Long> {
+public interface UsersRepositories extends CrudRepository<User, Long> {
 }

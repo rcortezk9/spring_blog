@@ -1,7 +1,9 @@
 package com.codeup.Services;
 
 import com.codeup.Repositories.PostsRepositories;
+import com.codeup.Repositories.UsersRepositories;
 import com.codeup.models.Post;
+import com.codeup.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,14 +16,18 @@ import org.springframework.stereotype.Service;
 public class PostSvc {
     private PostsRepositories postsDao; //step 1
 
+
     @Autowired
     public PostSvc(PostsRepositories postsDao){ //step 2
         this.postsDao = postsDao;
+
     }
+
 
     public Iterable<Post> findAll(){
         return postsDao.findAll();
     }
+
 
     public Post save(Post post){
         postsDao.save(post);
