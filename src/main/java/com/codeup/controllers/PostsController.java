@@ -5,9 +5,13 @@ import com.codeup.Services.PostSvc;
 import com.codeup.models.Post;
 import com.codeup.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 public class PostsController {
@@ -44,15 +48,19 @@ public class PostsController {
 
     @PostMapping("/posts/create")
     public String savePost(
-        @RequestParam(name = "title") String title,
-        @RequestParam(name = "body") String body,
+        @Valid Post post,
+        Errors validation,
         Model model
     ){
-        User user = usersDao.findOne(1l);
-        Post post = new Post(title, body, user);
+        if (validation.hasErrors()) {
+            model.addAttribute("errors", validation);
+            model.addAttribute("post", post);
+            return "posts/create";
+        }
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         post.setOwner(user);
         postSvc.save(post);
-        model.addAttribute("posts", post);
+        model.addAttribute("post", post);
         return "posts/create";
     }
 
