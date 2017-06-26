@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HelloWorldController {
 
+    @GetMapping("/")
+    public String showIndex(){
+        return "index";
+    }
+
     @GetMapping("/resume")
     public String ShowResume(){
         return "resume";
