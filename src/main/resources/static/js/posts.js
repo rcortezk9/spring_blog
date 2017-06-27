@@ -4,15 +4,15 @@
 
 (function($) {
     request = $.ajax({
-        'url': '/posts.json'
+        'url': '/post.json'
     });
-    request.done(function (ads) {
+    request.done(function (posts) {
         var html = '';
-        ads.forEach(function(ad) {
+        posts.forEach(function(post) {
             html += '<div>';
-            html += '<h1>' + ad.title + '</h1>';
-            html += '<p>' + ad.description + '</p>';
-            html += '<p>Published by ' + ad.owner.username + '</p>';
+            html += '<h1>' + post.title + '</h1>';
+            html += '<p>' + post.body + '</p>';
+            html += '<p>Published by ' + post.owner.username + '</p>';
             html += '</div>';
         });
         $('#posts').html(html);

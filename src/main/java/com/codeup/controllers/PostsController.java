@@ -27,8 +27,8 @@ public class PostsController {
 
     @GetMapping("/post.json")
     public @ResponseBody
-    Iterable<User> viewAll(){
-        return usersDao.findAll();
+    Iterable<Post> viewAll(){
+        return postSvc.findAll();
     }
 
     @GetMapping("/posts/ajax")
@@ -53,7 +53,7 @@ public class PostsController {
 
     @GetMapping("/posts/create")
     public String showPostForm(Model model) {
-        model.addAttribute("posts", new Post());
+        model.addAttribute("post", new Post());
         return "posts/create";
     }
 
