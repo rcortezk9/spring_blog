@@ -27,10 +27,8 @@ public class PostsController {
 
     @GetMapping("/posts")
     public String viewAll(Model model) {
-        User userLoggedin = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Iterable<Post> posts = postSvc.findAll();
         model.addAttribute("posts", posts);
-        model.addAttribute("userLoggedin", userLoggedin);
         return "posts/index";
     }
 
