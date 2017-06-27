@@ -39,30 +39,18 @@
 <form th:fragment="form">
     <div class="form-group">
         <label for="title">Title</label>
-        <input id="title" type="text" th:field="*{title}"/>
-    </div>
-    <div class="form-group">
-        <label for="body">Body</label>
-        <input id="body" type="text" th:field="*{body}"/>
-    </div>
-    <button class="btn btn-default">Save</button>
-</form>
-
-<form th:fragment="adForm">
-    <div class="form-group">
-        <label for="title">Title</label>
-        <input id="title" class="form-control" th:field="*{title}"/>
+        <input id="title" class="form-control" type="text" th:field="*{title}" />
         <div class="alert alert-warning alert-dismissible" role="alert" th:if="${#fields.hasErrors('title')}">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <span th:errors="*{title}" />
+            <span th:errors="*{title}"></span>
         </div>
     </div>
     <div class="form-group">
-        <label for="description">Description</label>
-        <input id="description" class="form-control" th:field="*{description}"/>
-        <div class="alert alert-warning alert-dismissible" role="alert" th:if="${#fields.hasErrors('description')}">
+        <label for="body">Body</label>
+        <input id="body" class="form-control" type="text" th:field="*{body}" />
+        <div class="alert alert-warning alert-dismissible" role="alert" th:if="${#fields.hasErrors('body')}">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <span th:errors="*{description}" />
+            <span th:errors="*{body}"></span>
         </div>
     </div>
     <button class="btn btn-default">Save</button>
