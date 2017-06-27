@@ -25,6 +25,17 @@ public class PostsController {
         this.usersDao = usersDao;
     }
 
+    @GetMapping("/post.json")
+    public @ResponseBody
+    Iterable<User> viewAll(){
+        return usersDao.findAll();
+    }
+
+    @GetMapping("/posts/ajax")
+    public String viewAllPostUsingAnAjaxCall() {
+        return "posts/ajax";
+    }
+
     @GetMapping("/posts")
     public String viewAll(Model model) {
         Iterable<Post> posts = postSvc.findAll();
