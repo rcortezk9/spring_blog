@@ -1,7 +1,7 @@
 package com.codeup.models;
 
 import org.hibernate.validator.constraints.NotBlank;
-
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
@@ -27,6 +27,7 @@ public class Post {
     private String body;
 
     @OneToOne
+    @JsonManagedReference
     private User owner;
 
 
