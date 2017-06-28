@@ -91,6 +91,7 @@ public class PostsController {
         }
 
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        post.setImageUrl(filename);
         post.setOwner(user);
         postSvc.save(post);
         model.addAttribute("post", post);

@@ -14,9 +14,9 @@
 
     <div th:each="post : ${posts}">
 
-        <div th:each="image : ${post.images}">
-            <img th:src="${image.path}" width="200px" height="200px" />
-        </div>
+        <!--<div th:each="image : ${post.images}">-->
+            <!--<img th:src="${image.path}" width="200px" height="200px" />-->
+        <!--</div>-->
 
         <div th:if="${post.imageUrl}">
             <img th:src="${'/uploads/' + post.imageUrl}" alt="" width="200px" height="200px" />
