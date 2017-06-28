@@ -30,6 +30,9 @@ public class Post {
     @JsonManagedReference
     private User owner;
 
+    @Column(nullable = true)
+    private String imageUrl;
+
 
     public Post(String title, String body, User owner) {
         this.title = title;
@@ -75,5 +78,13 @@ public class Post {
 
     public void setOwner(User owner) {
         this.owner = owner;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
